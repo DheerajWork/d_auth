@@ -12,21 +12,11 @@ class ArtistModel {
   List<Media>? media;
   List<String>? type;
 
-  ArtistModel(
-      {this.id,
-        this.users,
-        this.artisticName,
-        this.bio,
-        this.show,
-        this.order,
-        this.birthCountry,
-        this.pictureUrl,
-        this.media,
-        this.type});
+  ArtistModel({this.id, this.users, this.artisticName, this.bio, this.show, this.order, this.birthCountry, this.pictureUrl, this.media, this.type});
 
   ArtistModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    if(json['users'] != null){
+    if (json['users'] != null) {
       users = {};
       users = json['users'];
     }

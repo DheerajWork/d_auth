@@ -76,7 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (_) => ArtistDetails(
-                                    index: artist[i],
+                                    artist: artist[i],
                                   )));
                     },
                     child: Container(
