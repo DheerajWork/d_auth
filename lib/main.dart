@@ -1,6 +1,8 @@
-import 'package:d_auth/my_auth/my_auth.dart';
+import 'package:d_auth/button_page/button_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
+import 'api/home_screen.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyAuth(),
+      home: const HomeScreen(),
     );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:d_auth/my_auth/my_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class MyAuth extends StatefulWidget {
   const MyAuth({Key? key}) : super(key: key);
@@ -25,7 +24,7 @@ class _MyAuthState extends State<MyAuth> {
       verificationCompleted: (PhoneAuthCredential credential) async {
         await auth.signInWithCredential(credential);
         print("ccccccccccc");
-        print(credential);
+        print("$credential ....................");
       },
       verificationFailed: (FirebaseAuthException e) {
         if (e.code == 'invalid-phone-number') {
@@ -49,6 +48,12 @@ class _MyAuthState extends State<MyAuth> {
                       onPressed: () async {
                         PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId!, smsCode: otpCont.text);
                         await auth.signInWithCredential(credential);
+                        // ignore: use_build_context_synchronously
+                        if (verificationId != null) {
+                          // ignore: use_build_context_synchronously
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => const MyPage()));
+                          print("VerificationID $verificationId -----------------");
+                        }
                       },
                       child: const Text("Send"))
                 ],
@@ -56,7 +61,7 @@ class _MyAuthState extends State<MyAuth> {
             });
       },
       codeAutoRetrievalTimeout: (String v) {
-        // print("*************** $");
+        print("*************** $v");
         verificationId = v;
       },
     );
@@ -80,6 +85,8 @@ class _MyAuthState extends State<MyAuth> {
               ElevatedButton(
                 onPressed: () {
                   phoneAuth();
+                  print("SEND");
+                  print(phoneCont.text);
                 },
                 child: const Text("Send"),
               )
